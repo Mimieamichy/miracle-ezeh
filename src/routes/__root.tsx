@@ -72,14 +72,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Miracle Ezeh — Frontend Developer" },
+      { name: "description", content: "Portfolio of Miracle Ezeh, frontend developer crafting refined, performant web experiences." },
+      { name: "author", content: "Miracle Ezeh" },
+      { property: "og:title", content: "Miracle Ezeh — Frontend Developer" },
+      { property: "og:description", content: "Portfolio of Miracle Ezeh, frontend developer crafting refined, performant web experiences." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
