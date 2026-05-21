@@ -88,7 +88,7 @@ function Home() {
           </h1>
 
           <div className="relative mt-12 lg:mt-16 flex justify-center">
-            {/* orange circle backdrop */}
+            {/* burgundy circle backdrop */}
             <div className="absolute top-8 lg:top-12 left-1/2 -translate-x-1/2 w-64 h-64 sm:w-80 sm:h-80 lg:w-[26rem] lg:h-[26rem] rounded-full bg-primary" />
             <img
               src={portrait}
