@@ -37,7 +37,7 @@ function BlogIndex() {
           className="group block rounded-3xl overflow-hidden bg-accent text-accent-foreground"
         >
           <div className="grid md:grid-cols-2">
-            <div className="aspect-[4/3] md:aspect-auto bg-gradient-to-br from-orange-300 via-orange-400 to-rose-500 p-8 flex items-end">
+            <div className="aspect-[4/3] md:aspect-auto bg-gradient-to-br from-primary/30 via-primary/50 to-primary p-8 flex items-end">
               <div className="font-display text-6xl text-accent/80 leading-none">{featured.category}</div>
             </div>
             <div className="p-8 lg:p-12 flex flex-col justify-between gap-8">
