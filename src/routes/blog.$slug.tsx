@@ -118,7 +118,7 @@ function PostPage() {
         </div>
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground/85">
-          {post.body.map((para, i) => (
+          {post.body.map((para: string, i: number) => (
             <p key={i}>{para}</p>
           ))}
         </div>
