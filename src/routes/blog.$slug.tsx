@@ -110,9 +110,9 @@ function PostPage() {
         </div>
 
         <div className={`aspect-[16/9] rounded-3xl mb-12 bg-gradient-to-br ${
-          post.slug === "shipping-react-faster" ? "from-orange-300 via-rose-400 to-orange-600" :
+          post.slug === "shipping-react-faster" ? "from-primary/30 via-primary/50 to-primary/80" :
           post.slug === "ssr-tradeoffs" ? "from-emerald-300 via-teal-400 to-cyan-600" :
-          "from-amber-200 via-orange-400 to-rose-500"
+          "from-primary/20 via-primary/40 to-primary"
         } flex items-end p-8`}>
           <div className="font-display text-5xl lg:text-7xl text-accent/80 leading-none">{post.category}</div>
         </div>
