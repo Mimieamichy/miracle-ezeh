@@ -88,7 +88,7 @@ function Home() {
           </h1>
 
           <div className="relative mt-12 lg:mt-16 flex justify-center">
-            {/* orange circle backdrop */}
+            {/* burgundy circle backdrop */}
             <div className="absolute top-8 lg:top-12 left-1/2 -translate-x-1/2 w-64 h-64 sm:w-80 sm:h-80 lg:w-[26rem] lg:h-[26rem] rounded-full bg-primary" />
             <img
               src={portrait}
@@ -330,9 +330,9 @@ function Home() {
                 className="group block bg-secondary rounded-3xl overflow-hidden border border-border"
               >
                 <div className={`aspect-[4/3] p-6 flex items-end ${
-                  i === 0 ? "bg-gradient-to-br from-orange-200 via-orange-300 to-rose-400" :
+                  i === 0 ? "bg-gradient-to-br from-primary/20 via-primary/30 to-primary/60" :
                   i === 1 ? "bg-gradient-to-br from-emerald-300 to-teal-500" :
-                  "bg-gradient-to-br from-amber-200 to-orange-400"
+                  "bg-gradient-to-br from-primary/20 to-primary/50"
                 }`}>
                   <div className="font-display text-5xl text-accent/80 leading-none">{p.category}</div>
                 </div>
