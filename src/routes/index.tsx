@@ -1,265 +1,389 @@
-import { createFileRoute } from "@tanstack/react-router";
-import portrait from "../assets/portrait.jpg";
-import project1 from "../assets/project-1.jpg";
-import project2 from "../assets/project-2.jpg";
-import project3 from "../assets/project-3.jpg";
-import project4 from "../assets/project-4.jpg";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  ArrowUpRight,
+  Star,
+  Layout,
+  Code2,
+  Sparkles,
+  Quote,
+  Send,
+  Plus,
+} from "lucide-react";
+import portrait from "@/assets/portrait.jpg";
+import { projects } from "@/lib/projects";
+import { posts } from "@/lib/posts";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Miracle A. Ezeh — Frontend Developer & React Engineer" },
+      { name: "description", content: "I'm Miracle — a frontend developer with 4+ years building React, Next.js & TypeScript products for teams of 200+ staff and 1,000+ users." },
+      { property: "og:title", content: "Miracle A. Ezeh — Frontend Developer" },
+      { property: "og:description", content: "Frontend developer building fast, accessible, beautifully detailed products." },
+      { property: "og:url", content: "/" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+  }),
+  component: Home,
 });
 
-const projects = [
+const services = [
   {
-    n: "01",
-    title: "Halcyon Commerce",
-    role: "Frontend Engineering · UI Systems",
-    year: "2025",
-    image: project1,
-    tags: ["React", "TypeScript", "Motion"],
+    icon: Layout,
+    title: "UI Engineering",
+    blurb:
+      "Pixel-honest, accessible interfaces shipped with React, TypeScript and a respect for typography.",
   },
   {
-    n: "02",
-    title: "Atelier Nord Identity",
-    role: "Brand site & CMS",
-    year: "2024",
-    image: project2,
-    tags: ["Next.js", "Sanity", "GSAP"],
+    icon: Code2,
+    title: "Web Apps",
+    blurb:
+      "Next.js & TanStack apps with SSR/SSG, fast LCP, REST integration and clean state.",
   },
   {
-    n: "03",
-    title: "Lumen Analytics",
-    role: "Dashboard & Design System",
-    year: "2024",
-    image: project3,
-    tags: ["React", "D3", "Tailwind"],
-  },
-  {
-    n: "04",
-    title: "Press / Type Foundry",
-    role: "Editorial microsite",
-    year: "2023",
-    image: project4,
-    tags: ["Astro", "WebGL"],
+    icon: Sparkles,
+    title: "Design Systems",
+    blurb:
+      "Reusable component libraries, semantic tokens and patterns your whole team can extend.",
   },
 ];
 
-function Index() {
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Nav */}
-      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/60">
-        <nav className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-          <a href="#top" className="font-display font-semibold tracking-tight text-sm">
-            Miracle Ezeh<span className="text-muted-foreground">/dev</span>
-          </a>
-          <ul className="hidden md:flex items-center gap-8 text-sm">
-            <li><a className="hover:text-muted-foreground transition" href="#work">Work</a></li>
-            <li><a className="hover:text-muted-foreground transition" href="#about">About</a></li>
-            <li><a className="hover:text-muted-foreground transition" href="#contact">Contact</a></li>
-          </ul>
-          <a
-            href="#contact"
-            className="text-sm font-medium px-4 py-2 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition"
-          >
-            Get in touch
-          </a>
-        </nav>
-      </header>
+const experience = [
+  {
+    role: "Frontend Developer & Facilitator",
+    company: "Harley Innovations Hub",
+    period: "Jan 2026 – Apr 2026",
+    detail: "Built internal tools & learning platforms in React/Next.js. Facilitated curricula on React, state, and modern Git workflows.",
+  },
+  {
+    role: "Frontend Developer & IT Officer",
+    company: "Dennic Electrical Construction",
+    period: "Jun 2025 – Dec 2025",
+    detail: "Owned the company's web presence and internal tooling. Streamlined workflows across a 200+ staff organisation.",
+  },
+  {
+    role: "Freelance Frontend Developer",
+    company: "Independent",
+    period: "2022 – Present",
+    detail: "Shipped portfolios, dashboards, school portals and commerce surfaces for clients across Nigeria and abroad.",
+  },
+];
 
-      <main id="top" className="pt-16">
-        {/* Hero */}
-        <section className="max-w-7xl mx-auto px-6 lg:px-10 pt-16 lg:pt-28 pb-20 lg:pb-32">
-          <div className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-muted-foreground mb-10">
-            <span className="h-px w-8 bg-foreground/40" />
-            Frontend Developer · Available May 2026
+function Home() {
+  return (
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* HERO */}
+      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24">
+        <div className="max-w-6xl mx-auto px-6 lg:px-10">
+          <div className="flex justify-center mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-secondary text-xs font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              Hello
+            </span>
           </div>
-          <h1 className="font-display font-medium text-[clamp(2.75rem,9vw,8.5rem)] leading-[0.92] tracking-tight max-w-6xl">
-            Crafting calm, <em className="italic font-light text-muted-foreground">considered</em> interfaces for the modern web.
+
+          <h1 className="font-display text-center text-[clamp(2.5rem,8vw,6rem)] leading-[0.95] tracking-tight">
+            I'm <span className="text-primary italic">Miracle</span>,<br />
+            Frontend Developer.
           </h1>
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
-            <p className="md:col-span-6 md:col-start-7 text-base lg:text-lg text-muted-foreground leading-relaxed">
-              I'm Miracle — a frontend developer based in Lagos, building fast,
-              accessible, and beautifully detailed products with React, TypeScript,
-              and a respect for typography.
+
+          <div className="relative mt-12 lg:mt-16 flex justify-center">
+            {/* orange circle backdrop */}
+            <div className="absolute top-8 lg:top-12 left-1/2 -translate-x-1/2 w-64 h-64 sm:w-80 sm:h-80 lg:w-[26rem] lg:h-[26rem] rounded-full bg-primary" />
+            <img
+              src={portrait}
+              alt="Miracle A. Ezeh"
+              className="relative z-10 w-64 sm:w-80 lg:w-[28rem] aspect-square object-cover rounded-full grayscale-[20%]"
+            />
+
+            {/* floating quote left */}
+            <div className="hidden md:block absolute left-0 top-12 max-w-[14rem] z-20">
+              <Quote className="w-5 h-5 text-primary mb-2" />
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                "I build interfaces that feel quiet, precise and quick to the touch."
+              </p>
+            </div>
+
+            {/* floating rating right */}
+            <div className="hidden md:flex absolute right-0 top-12 flex-col items-end z-20">
+              <div className="flex gap-1 mb-2">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                ))}
+              </div>
+              <div className="font-display text-3xl leading-none">4 Years</div>
+              <div className="text-xs text-muted-foreground mt-1">Experience</div>
+            </div>
+
+            {/* CTAs floating bottom */}
+            <div className="absolute bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-full font-medium text-sm hover:opacity-90 transition shadow-lg"
+              >
+                Portfolio <ArrowUpRight className="w-4 h-4" />
+              </Link>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 bg-background text-foreground border border-border px-5 py-2.5 rounded-full font-medium text-sm hover:bg-secondary transition"
+              >
+                Hire me
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES — dark band */}
+      <section id="services" className="bg-accent text-accent-foreground rounded-t-[2.5rem]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+            <h2 className="font-display text-4xl lg:text-6xl tracking-tight">
+              My <span className="text-primary">Services</span>
+            </h2>
+            <p className="max-w-md text-sm text-accent-foreground/60 leading-relaxed">
+              Frontend engineering for founders, studios and product teams — from
+              a single marketing page to a full design system.
             </p>
           </div>
-        </section>
 
-        {/* Hero image strip */}
-        <section className="border-y border-border">
-          <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10 grid grid-cols-2 md:grid-cols-4 gap-10 text-sm">
-            {[
-              ["06+", "Years building"],
-              ["40+", "Shipped projects"],
-              ["12", "Clients worldwide"],
-              ["∞", "Cups of coffee"],
-            ].map(([k, v]) => (
-              <div key={v}>
-                <div className="font-display text-3xl lg:text-4xl">{k}</div>
-                <div className="text-muted-foreground mt-1">{v}</div>
+          <div className="grid md:grid-cols-3 gap-5">
+            {services.map((s) => (
+              <div
+                key={s.title}
+                className="group relative overflow-hidden bg-white/[0.04] border border-white/10 rounded-2xl p-7 hover:bg-white/[0.07] transition"
+              >
+                <div className="w-11 h-11 rounded-xl bg-primary/15 text-primary flex items-center justify-center mb-6">
+                  <s.icon className="w-5 h-5" />
+                </div>
+                <h3 className="font-display text-2xl mb-3">{s.title}</h3>
+                <p className="text-sm text-accent-foreground/60 leading-relaxed mb-10">
+                  {s.blurb}
+                </p>
+                <div className="absolute bottom-5 right-5 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center group-hover:rotate-12 transition">
+                  <ArrowUpRight className="w-4 h-4" />
+                </div>
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Work / hero-grid */}
-        <section id="work" className="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                Selected work
-              </div>
-              <h2 className="font-display text-4xl lg:text-6xl tracking-tight">
-                Recent projects
-              </h2>
-            </div>
-            <a href="#contact" className="hidden md:inline text-sm underline underline-offset-4 hover:text-muted-foreground">
-              Start a project →
-            </a>
+      {/* EXPERIENCE timeline */}
+      <section id="about" className="py-20 lg:py-28">
+        <div className="max-w-6xl mx-auto px-6 lg:px-10">
+          <h2 className="font-display text-4xl lg:text-6xl tracking-tight text-center mb-16">
+            My Work <span className="text-primary">Experience</span>
+          </h2>
+
+          <div className="relative">
+            <div className="hidden md:block absolute left-1/2 top-2 bottom-2 w-px bg-border -translate-x-1/2" />
+            <ul className="space-y-12">
+              {experience.map((e, i) => (
+                <li key={e.role} className="grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 items-start">
+                  <div className={i % 2 === 0 ? "md:text-right" : "md:order-3"}>
+                    <div className="font-display text-xl">{e.company}</div>
+                    <div className="text-sm text-muted-foreground mt-1">{e.period}</div>
+                  </div>
+                  <div className="hidden md:flex w-4 h-4 rounded-full bg-primary mt-2 shrink-0 ring-4 ring-primary/15" />
+                  <div className={i % 2 === 0 ? "md:order-3" : ""}>
+                    <div className="font-display text-xl">{e.role}</div>
+                    <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{e.detail}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
+        </div>
+      </section>
 
-          {/* Featured */}
-          <a href="#" className="group block mb-8">
-            <div className="overflow-hidden bg-muted aspect-[16/9]">
+      {/* WHY HIRE ME */}
+      <section className="px-3 lg:px-6 pb-20">
+        <div className="max-w-7xl mx-auto bg-secondary rounded-[2rem] overflow-hidden">
+          <div className="grid md:grid-cols-2 gap-10 p-8 lg:p-16 items-center">
+            <div className="relative">
+              <div className="absolute -top-4 -left-4 w-48 h-48 lg:w-72 lg:h-72 bg-primary rounded-full" />
               <img
-                src={projects[0].image}
-                alt={projects[0].title}
-                width={1200}
-                height={900}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                src={portrait}
+                alt="Miracle smiling"
+                className="relative rounded-3xl object-cover w-full aspect-[4/5] grayscale-[15%]"
               />
             </div>
-            <div className="grid grid-cols-12 gap-6 mt-5 text-sm">
-              <div className="col-span-1 text-muted-foreground">{projects[0].n}</div>
-              <div className="col-span-7 md:col-span-6">
-                <div className="font-display text-xl">{projects[0].title}</div>
-                <div className="text-muted-foreground">{projects[0].role}</div>
-              </div>
-              <div className="col-span-4 md:col-span-4 text-muted-foreground">
-                {projects[0].tags.join(" · ")}
-              </div>
-              <div className="col-span-12 md:col-span-1 text-right text-muted-foreground">
-                {projects[0].year}
-              </div>
-            </div>
-          </a>
-
-          {/* Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
-            {projects.slice(1).map((p) => (
-              <a href="#" key={p.title} className="group block">
-                <div className="overflow-hidden bg-muted aspect-[4/3]">
-                  <img
-                    src={p.image}
-                    alt={p.title}
-                    width={1200}
-                    height={900}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                  />
+            <div>
+              <h2 className="font-display text-4xl lg:text-5xl tracking-tight mb-4">
+                Why <span className="text-primary">Hire me?</span>
+              </h2>
+              <p className="text-muted-foreground leading-relaxed max-w-md mb-10">
+                Four years of shipping work that performs in production —
+                accessible, fast, and easy for teams to extend. I care about the
+                small details because they add up.
+              </p>
+              <div className="grid grid-cols-2 gap-6 mb-10">
+                <div>
+                  <div className="font-display text-4xl text-primary">40+</div>
+                  <div className="text-sm text-muted-foreground mt-1">Projects shipped</div>
                 </div>
-                <div className="flex items-baseline justify-between mt-4">
-                  <div>
-                    <div className="text-xs text-muted-foreground">{p.n}</div>
-                    <div className="font-display text-lg mt-1">{p.title}</div>
-                    <div className="text-sm text-muted-foreground">{p.role}</div>
+                <div>
+                  <div className="font-display text-4xl text-primary">200+</div>
+                  <div className="text-sm text-muted-foreground mt-1">Staff impacted</div>
+                </div>
+              </div>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full font-medium hover:bg-accent/90"
+              >
+                Hire me <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PORTFOLIO PREVIEW */}
+      <section className="py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="flex items-end justify-between gap-6 mb-12">
+            <h2 className="font-display text-4xl lg:text-6xl tracking-tight max-w-2xl">
+              Lets have a look at<br />
+              my <span className="text-primary">Portfolio</span>
+            </h2>
+            <Link
+              to="/projects"
+              className="hidden sm:inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-medium hover:opacity-90"
+            >
+              See All <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {projects.slice(0, 2).map((p) => (
+              <Link
+                to="/projects"
+                hash={p.slug}
+                key={p.slug}
+                className="group block rounded-3xl overflow-hidden bg-secondary border border-border"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img src={p.image} alt={p.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-accent/80 via-accent/20 to-transparent" />
+                  <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between">
+                    <div>
+                      <div className="text-xs text-white/70 uppercase tracking-[0.18em]">{p.category}</div>
+                      <div className="font-display text-3xl text-white mt-1">{p.name}</div>
+                    </div>
+                    <div className="w-11 h-11 rounded-full bg-primary text-primary-foreground flex items-center justify-center shrink-0">
+                      <ArrowUpRight className="w-4 h-4" />
+                    </div>
                   </div>
-                  <div className="text-xs text-muted-foreground">{p.year}</div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
-        </section>
 
-        {/* About */}
-        <section id="about" className="border-t border-border bg-card/40">
-          <div className="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32 grid lg:grid-cols-12 gap-12 lg:gap-20">
-            <div className="lg:col-span-5">
-              <div className="aspect-[4/5] overflow-hidden bg-muted">
-                <img
-                  src={portrait}
-                  alt="Portrait of Miracle Ezeh"
-                  width={1024}
-                  height={1280}
-                  loading="lazy"
-                  className="w-full h-full object-cover grayscale"
-                />
-              </div>
-            </div>
-            <div className="lg:col-span-7 flex flex-col justify-between">
-              <div>
-                <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                  About
-                </div>
-                <h2 className="font-display text-3xl lg:text-5xl tracking-tight leading-[1.05]">
-                  I build interfaces that feel inevitable — quiet, precise, and quick to the touch.
-                </h2>
-                <div className="mt-8 space-y-5 text-muted-foreground max-w-2xl leading-relaxed">
-                  <p>
-                    For six years I've partnered with founders, studios, and product
-                    teams to translate ambitious ideas into web experiences that
-                    perform. My work lives at the intersection of engineering rigor
-                    and editorial craft.
-                  </p>
-                  <p>
-                    Currently freelancing from Lagos, previously building design
-                    systems for early-stage startups across Europe and West Africa.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-12 grid grid-cols-2 gap-8 text-sm">
-                <div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Stack</div>
-                  <ul className="space-y-1">
-                    <li>React · Next.js · TanStack</li>
-                    <li>TypeScript · Node</li>
-                    <li>Tailwind · CSS architecture</li>
-                    <li>Motion · GSAP · WebGL</li>
-                  </ul>
-                </div>
-                <div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Services</div>
-                  <ul className="space-y-1">
-                    <li>Product UI engineering</li>
-                    <li>Marketing & brand sites</li>
-                    <li>Design systems</li>
-                    <li>Performance audits</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+          <div className="flex flex-wrap gap-2 mt-10 justify-center">
+            {["Landing Page", "Product Design", "Animation", "Design Systems", "Cards"].map((t) => (
+              <span key={t} className="px-4 py-1.5 rounded-full bg-secondary border border-border text-xs">
+                {t}
+              </span>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Contact */}
-        <section id="contact" className="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-40">
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-            Contact
+      {/* MARQUEE */}
+      <section className="bg-primary text-primary-foreground py-5 overflow-hidden">
+        <div className="flex gap-12 marquee-track whitespace-nowrap font-display text-2xl lg:text-3xl">
+          {Array.from({ length: 2 }).map((_, dup) => (
+            <div key={dup} className="flex gap-12 shrink-0">
+              {["React", "Next.js", "TypeScript", "Tailwind", "TanStack", "Design Systems", "SSR", "Accessibility"].map((w) => (
+                <span key={w} className="flex items-center gap-12">
+                  {w}
+                  <Plus className="w-5 h-5" />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* BLOG PREVIEW */}
+      <section className="py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="flex items-end justify-between gap-6 mb-12">
+            <h2 className="font-display text-4xl lg:text-6xl tracking-tight">
+              From my <span className="text-primary">blog</span>
+            </h2>
+            <Link
+              to="/blog"
+              className="hidden sm:inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-medium hover:opacity-90"
+            >
+              See All <ArrowUpRight className="w-4 h-4" />
+            </Link>
           </div>
-          <h2 className="font-display text-[clamp(2.25rem,7vw,6rem)] leading-[0.95] tracking-tight max-w-5xl">
-            Have something in mind? <br />
-            <a href="mailto:hello@miracleezeh.com" className="italic font-light underline underline-offset-[0.15em] decoration-1 hover:text-muted-foreground transition">
-              hello@miracleezeh.com
-            </a>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {posts.map((p, i) => (
+              <Link
+                to="/blog/$slug"
+                params={{ slug: p.slug }}
+                key={p.slug}
+                className="group block bg-secondary rounded-3xl overflow-hidden border border-border"
+              >
+                <div className={`aspect-[4/3] p-6 flex items-end ${
+                  i === 0 ? "bg-gradient-to-br from-orange-200 via-orange-300 to-rose-400" :
+                  i === 1 ? "bg-gradient-to-br from-emerald-300 to-teal-500" :
+                  "bg-gradient-to-br from-amber-200 to-orange-400"
+                }`}>
+                  <div className="font-display text-5xl text-accent/80 leading-none">{p.category}</div>
+                </div>
+                <div className="p-6">
+                  <div className="text-xs text-muted-foreground uppercase tracking-[0.18em] mb-2">
+                    {p.readTime} · {new Date(p.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                  </div>
+                  <h3 className="font-display text-xl leading-snug group-hover:text-primary transition">
+                    {p.title}
+                  </h3>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="py-20 lg:py-28">
+        <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
+          <h2 className="font-display text-4xl lg:text-6xl tracking-tight">
+            Have an Awesome Project<br />
+            Idea? <span className="text-primary italic">Let's Discuss</span>
           </h2>
-          <div className="mt-16 flex flex-wrap gap-6 text-sm">
-            {["GitHub", "LinkedIn", "X / Twitter", "Read.cv"].map((l) => (
-              <a key={l} href="#" className="px-5 py-2 rounded-full border border-border hover:bg-foreground hover:text-background transition">
-                {l}
-              </a>
-            ))}
+          <form
+            onSubmit={(e) => { e.preventDefault(); window.location.href = `mailto:amichy07@gmail.com?subject=Project%20from%20${encodeURIComponent((e.currentTarget.elements.namedItem("email") as HTMLInputElement).value)}`; }}
+            className="mt-12 flex flex-col sm:flex-row items-center gap-2 max-w-xl mx-auto p-2 bg-secondary border border-border rounded-full"
+          >
+            <div className="w-10 h-10 shrink-0 rounded-full bg-primary text-primary-foreground flex items-center justify-center ml-1">
+              <Send className="w-4 h-4" />
+            </div>
+            <input
+              name="email"
+              type="email"
+              required
+              placeholder="hello@youremail.com"
+              className="flex-1 bg-transparent px-3 py-2 outline-none text-sm placeholder:text-muted-foreground"
+            />
+            <button
+              type="submit"
+              className="px-6 py-2.5 bg-accent text-accent-foreground rounded-full text-sm font-medium hover:bg-accent/90"
+            >
+              Send
+            </button>
+          </form>
+          <div className="mt-6 text-sm text-muted-foreground">
+            or email me directly at{" "}
+            <a href="mailto:amichy07@gmail.com" className="text-primary underline underline-offset-4">amichy07@gmail.com</a>
           </div>
-        </section>
-
-        <footer className="border-t border-border">
-          <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8 flex flex-col md:flex-row justify-between gap-3 text-xs text-muted-foreground">
-            <div>© {new Date().getFullYear()} Miracle Ezeh. All rights reserved.</div>
-            <div>Designed & built in Lagos.</div>
-          </div>
-        </footer>
-      </main>
+        </div>
+      </section>
     </div>
   );
 }
