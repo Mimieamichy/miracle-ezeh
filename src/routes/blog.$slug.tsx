@@ -93,6 +93,20 @@ function PostPage() {
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed mb-8">{post.excerpt}</p>
 
+        <div className={`aspect-[16/9] rounded-3xl mb-12 bg-gradient-to-br ${
+          post.slug === "shipping-react-faster" ? "from-primary/30 via-primary/50 to-primary/80" :
+          post.slug === "ssr-tradeoffs" ? "from-emerald-300 via-teal-400 to-cyan-600" :
+          "from-primary/20 via-primary/40 to-primary"
+        } flex items-end p-8`}>
+          <div className="font-display text-5xl lg:text-7xl text-accent/80 leading-none">{post.category}</div>
+        </div>
+
+        <div className="space-y-6 text-lg leading-relaxed text-foreground/85 mb-12">
+          {post.body.map((para: string, i: number) => (
+            <p key={i}>{para}</p>
+          ))}
+        </div>
+
         {/* Share bar */}
         <div className="flex flex-wrap items-center gap-2 p-2 rounded-full bg-secondary border border-border mb-12 w-fit">
           <button onClick={onShare} className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium">
@@ -107,20 +121,6 @@ function PostPage() {
           <a href={linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm hover:bg-background transition" aria-label="Share on LinkedIn">
             <Linkedin className="w-4 h-4" /> LinkedIn
           </a>
-        </div>
-
-        <div className={`aspect-[16/9] rounded-3xl mb-12 bg-gradient-to-br ${
-          post.slug === "shipping-react-faster" ? "from-primary/30 via-primary/50 to-primary/80" :
-          post.slug === "ssr-tradeoffs" ? "from-emerald-300 via-teal-400 to-cyan-600" :
-          "from-primary/20 via-primary/40 to-primary"
-        } flex items-end p-8`}>
-          <div className="font-display text-5xl lg:text-7xl text-accent/80 leading-none">{post.category}</div>
-        </div>
-
-        <div className="space-y-6 text-lg leading-relaxed text-foreground/85">
-          {post.body.map((para: string, i: number) => (
-            <p key={i}>{para}</p>
-          ))}
         </div>
 
         <div className="mt-16 pt-8 border-t border-border">

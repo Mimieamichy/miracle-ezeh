@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight,  } from "lucide-react";
 
 export function Footer() {
   return (
@@ -31,7 +31,7 @@ export function Footer() {
               <li><Link to="/" className="hover:text-primary">Home</Link></li>
               <li><Link to="/projects" className="hover:text-primary">Projects</Link></li>
               <li><Link to="/blog" className="hover:text-primary">Blog</Link></li>
-              <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
+
             </ul>
           </div>
           <div>
@@ -39,15 +39,14 @@ export function Footer() {
             <ul className="space-y-2">
               <li><a href="https://github.com/Mimieamichy" className="hover:text-primary">GitHub</a></li>
               <li><a href="https://twitter.com/js_mimie" className="hover:text-primary">Twitter</a></li>
-              <li><a href="https://miracleezeh.netlify.app" className="hover:text-primary">Old portfolio</a></li>
               <li><a href="mailto:amichy07@gmail.com" className="hover:text-primary">Email</a></li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-xs text-accent-foreground/40">
-          <div>© {new Date().getFullYear()} Miracle A. Ezeh — Built with TanStack Start.</div>
-          <div>Made in Nigeria.</div>
+          <div>© {new Date().getFullYear()} Miracle A. Ezeh </div>
+          <div>Made in 🇳🇬. </div>
         </div>
       </div>
     </footer>

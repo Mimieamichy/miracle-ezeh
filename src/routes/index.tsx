@@ -8,17 +8,18 @@ import {
   Quote,
   Send,
   Plus,
+  Check
 } from "lucide-react";
-import portrait from "@/assets/portrait.jpg";
+import image from "@/assets/miracle-ezeh.jpeg";
 import { projects } from "@/lib/projects";
 import { posts } from "@/lib/posts";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Miracle A. Ezeh — Frontend Developer & React Engineer" },
-      { name: "description", content: "I'm Miracle — a frontend developer with 4+ years building React, Next.js & TypeScript products for teams of 200+ staff and 1,000+ users." },
-      { property: "og:title", content: "Miracle A. Ezeh — Frontend Developer" },
+      { title: "Miracle A. Ezeh Frontend Developer & React Engineer" },
+      { name: "description", content: "I'm Miracle  a frontend developer with 4+ years building React, Next.js & TypeScript products for teams of 50+ staff and 500+ users." },
+      { property: "og:title", content: "Miracle A. Ezeh Frontend Developer" },
       { property: "og:description", content: "Frontend developer building fast, accessible, beautifully detailed products." },
       { property: "og:url", content: "/" },
     ],
@@ -52,7 +53,7 @@ const experience = [
   {
     role: "Frontend Developer & Facilitator",
     company: "Harley Innovations Hub",
-    period: "Jan 2026 – Apr 2026",
+    period: "Jan 2026 – Present",
     detail: "Built internal tools & learning platforms in React/Next.js. Facilitated curricula on React, state, and modern Git workflows.",
   },
   {
@@ -91,9 +92,9 @@ function Home() {
             {/* burgundy circle backdrop */}
             <div className="absolute top-8 lg:top-12 left-1/2 -translate-x-1/2 w-64 h-64 sm:w-80 sm:h-80 lg:w-[26rem] lg:h-[26rem] rounded-full bg-primary" />
             <img
-              src={portrait}
+              src={image}
               alt="Miracle A. Ezeh"
-              className="relative z-10 w-64 sm:w-80 lg:w-[28rem] aspect-square object-cover rounded-full grayscale-[20%]"
+              className="relative z-10 w-64 sm:w-80 lg:w-[28rem] aspect-square object-cover rounded-full grayscale-[100%]"
             />
 
             {/* floating quote left */}
@@ -119,13 +120,13 @@ function Home() {
             <div className="absolute bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-full font-medium text-sm hover:opacity-90 transition shadow-lg"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-3 py-1.5 md:px-5 md:py-2.5 rounded-full font-medium text-sm hover:opacity-90 transition shadow-lg"
               >
                 Portfolio <ArrowUpRight className="w-4 h-4" />
               </Link>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 bg-background text-foreground border border-border px-5 py-2.5 rounded-full font-medium text-sm hover:bg-secondary transition"
+                className=" hidden md:inline-flex items-center gap-2 bg-background text-foreground border border-border px-3 py-1.5 md:px-5 md:py-2.5 rounded-full font-small md:font-medium text-xs md:text-sm hover:bg-secondary transition"
               >
                 Hire me
               </a>
@@ -142,7 +143,7 @@ function Home() {
               My <span className="text-primary">Services</span>
             </h2>
             <p className="max-w-md text-sm text-accent-foreground/60 leading-relaxed">
-              Frontend engineering for founders, studios and product teams — from
+              Frontend engineering for founders, studios and product teams  from
               a single marketing page to a full design system.
             </p>
           </div>
@@ -161,7 +162,7 @@ function Home() {
                   {s.blurb}
                 </p>
                 <div className="absolute bottom-5 right-5 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center group-hover:rotate-12 transition">
-                  <ArrowUpRight className="w-4 h-4" />
+                  <Check className="w-4 h-4" />
                 </div>
               </div>
             ))}
@@ -181,12 +182,12 @@ function Home() {
             <ul className="space-y-12">
               {experience.map((e, i) => (
                 <li key={e.role} className="grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 items-start">
-                  <div className={i % 2 === 0 ? "md:text-right" : "md:order-3"}>
+                  <div className={i % 2 === 0 ? "md:order-1 md:text-right" : "md:order-3"}>
                     <div className="font-display text-xl">{e.company}</div>
                     <div className="text-sm text-muted-foreground mt-1">{e.period}</div>
                   </div>
-                  <div className="hidden md:flex w-4 h-4 rounded-full bg-primary mt-2 shrink-0 ring-4 ring-primary/15" />
-                  <div className={i % 2 === 0 ? "md:order-3" : ""}>
+                  <div className="hidden md:flex w-4 h-4 rounded-full bg-primary mt-2 shrink-0 ring-4 ring-primary/15 md:order-2" />
+                  <div className={i % 2 === 0 ? "md:order-3" : "md:order-1 md:text-right"}>
                     <div className="font-display text-xl">{e.role}</div>
                     <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{e.detail}</p>
                   </div>
@@ -204,9 +205,9 @@ function Home() {
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-48 h-48 lg:w-72 lg:h-72 bg-primary rounded-full" />
               <img
-                src={portrait}
+                src={image}
                 alt="Miracle smiling"
-                className="relative rounded-3xl object-cover w-full aspect-[4/5] grayscale-[15%]"
+                className="relative rounded-3xl object-cover w-full aspect-[4/5] grayscale-[100%]"
               />
             </div>
             <div>
@@ -214,17 +215,17 @@ function Home() {
                 Why <span className="text-primary">Hire me?</span>
               </h2>
               <p className="text-muted-foreground leading-relaxed max-w-md mb-10">
-                Four years of shipping work that performs in production —
+                Four years of shipping work that performs in production 
                 accessible, fast, and easy for teams to extend. I care about the
                 small details because they add up.
               </p>
               <div className="grid grid-cols-2 gap-6 mb-10">
                 <div>
-                  <div className="font-display text-4xl text-primary">40+</div>
+                  <div className="font-display text-4xl text-primary">20+</div>
                   <div className="text-sm text-muted-foreground mt-1">Projects shipped</div>
                 </div>
                 <div>
-                  <div className="font-display text-4xl text-primary">200+</div>
+                  <div className="font-display text-4xl text-primary">100+</div>
                   <div className="text-sm text-muted-foreground mt-1">Staff impacted</div>
                 </div>
               </div>
@@ -340,9 +341,12 @@ function Home() {
                   <div className="text-xs text-muted-foreground uppercase tracking-[0.18em] mb-2">
                     {p.readTime} · {new Date(p.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                   </div>
-                  <h3 className="font-display text-xl leading-snug group-hover:text-primary transition">
+                  <h3 className="font-display text-xl leading-snug group-hover:text-primary transition mb-4">
                     {p.title}
                   </h3>
+                  <div className="inline-flex items-center gap-2 text-sm text-primary font-medium">
+                    Read article <ArrowUpRight className="w-4 h-4" />
+                  </div>
                 </div>
               </Link>
             ))}
@@ -359,9 +363,9 @@ function Home() {
           </h2>
           <form
             onSubmit={(e) => { e.preventDefault(); window.location.href = `mailto:amichy07@gmail.com?subject=Project%20from%20${encodeURIComponent((e.currentTarget.elements.namedItem("email") as HTMLInputElement).value)}`; }}
-            className="mt-12 flex flex-col sm:flex-row items-center gap-2 max-w-xl mx-auto p-2 bg-secondary border border-border rounded-full"
+            className="mt-12 flex items-center gap-2 max-w-xl mx-auto p-1.5 sm:p-2 bg-secondary border border-border rounded-full"
           >
-            <div className="w-10 h-10 shrink-0 rounded-full bg-primary text-primary-foreground flex items-center justify-center ml-1">
+            <div className="hidden sm:flex w-10 h-10 shrink-0 rounded-full bg-primary text-primary-foreground items-center justify-center ml-1">
               <Send className="w-4 h-4" />
             </div>
             <input
@@ -369,11 +373,11 @@ function Home() {
               type="email"
               required
               placeholder="hello@youremail.com"
-              className="flex-1 bg-transparent px-3 py-2 outline-none text-sm placeholder:text-muted-foreground"
+              className="flex-1 bg-transparent px-4 sm:px-3 py-2 outline-none text-sm placeholder:text-muted-foreground min-w-0"
             />
             <button
               type="submit"
-              className="px-6 py-2.5 bg-accent text-accent-foreground rounded-full text-sm font-medium hover:bg-accent/90"
+              className="px-5 sm:px-6 py-2.5 bg-accent text-accent-foreground rounded-full text-sm font-medium hover:bg-accent/90 shrink-0"
             >
               Send
             </button>
