@@ -6,9 +6,9 @@ import { projects } from "@/lib/projects";
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Projects — Miracle A. Ezeh" },
+      { title: "Projects" },
       { name: "description", content: "Selected projects by Miracle A. Ezeh — React, Next.js & TypeScript work shipped for studios, schools and product teams." },
-      { property: "og:title", content: "Projects — Miracle A. Ezeh" },
+      { property: "og:title", content: "Projects" },
       { property: "og:description", content: "Selected projects: education portals, learning platforms, commerce surfaces and more." },
       { property: "og:url", content: "/projects" },
     ],

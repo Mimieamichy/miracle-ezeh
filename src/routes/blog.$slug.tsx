@@ -108,17 +108,17 @@ function PostPage() {
         </div>
 
         {/* Share bar */}
-        <div className="flex flex-wrap items-center gap-2 p-2 rounded-full bg-secondary border border-border mb-12 w-fit">
-          <button onClick={onShare} className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 p-2 rounded-2xl sm:rounded-full bg-secondary border border-border mb-12 w-full sm:w-fit">
+          <button onClick={onShare} className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-xl sm:rounded-full text-xs sm:text-sm font-medium">
             <Share2 className="w-4 h-4" /> Share
           </button>
-          <button onClick={onCopy} className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm hover:bg-background transition">
+          <button onClick={onCopy} className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl sm:rounded-full text-xs sm:text-sm hover:bg-background transition">
             {copied ? <><Check className="w-4 h-4 text-primary" /> Copied</> : <><Copy className="w-4 h-4" /> Copy link</>}
           </button>
-          <a href={tweet} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm hover:bg-background transition" aria-label="Share on Twitter">
+          <a href={tweet} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl sm:rounded-full text-xs sm:text-sm hover:bg-background transition" aria-label="Share on Twitter">
             <Twitter className="w-4 h-4" /> Tweet
           </a>
-          <a href={linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm hover:bg-background transition" aria-label="Share on LinkedIn">
+          <a href={linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl sm:rounded-full text-xs sm:text-sm hover:bg-background transition" aria-label="Share on LinkedIn">
             <Linkedin className="w-4 h-4" /> LinkedIn
           </a>
         </div>
