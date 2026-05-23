@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
 import {
   ArrowUpRight,
   Star,
@@ -7,11 +8,13 @@ import {
   Sparkles,
   Quote,
   Send,
-  Plus,
-  Check
+  Check,
+  Asterisk,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import image from "@/assets/miracle-ezeh.jpeg";
-import { projects } from "@/lib/projects";
+import { projects, testimonials } from "@/lib/projects";
 import { posts } from "@/lib/posts";
 
 export const Route = createFileRoute("/")({
@@ -71,6 +74,23 @@ const experience = [
 ];
 
 function Home() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 8000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* HERO */}
@@ -265,7 +285,16 @@ function Home() {
                 className="group block rounded-3xl overflow-hidden bg-secondary border border-border"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img src={p.image} alt={p.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  {p.video && (
+                    <video
+                      src={p.video}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-accent/80 via-accent/20 to-transparent" />
                   <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between">
                     <div>
@@ -291,6 +320,72 @@ function Home() {
         </div>
       </section>
 
+      {/* TESTIMONIALS CAROUSEL */}
+      <section className="py-16 lg:py-20 bg-accent text-accent-foreground overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="flex flex-col items-center text-center mb-10">
+            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+              <Quote className="w-5 h-5 text-primary" />
+            </div>
+            <h2 className="font-display text-3xl lg:text-4xl tracking-tight">
+              What <span className="text-primary italic">Clients</span> Say
+            </h2>
+          </div>
+
+          <div className="relative">
+            <div className="overflow-hidden">
+              <div 
+                className="flex transition-transform duration-700 ease-in-out"
+                style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
+              >
+                {testimonials.map((t, i) => (
+                  <div key={i} className="w-full shrink-0 px-4">
+                    <div className="max-w-3xl mx-auto">
+                      <p className="font-display text-xl md:text-2xl lg:text-3xl leading-tight mb-6 text-accent-foreground/90 italic">
+                        "{t.content}"
+                      </p>
+                      <div className="flex flex-col items-center">
+                        <div className="font-display text-lg text-primary">{t.author}</div>
+                        {t.role && (
+                          <div className="text-xs text-accent-foreground/50 mt-1 uppercase tracking-widest font-medium">
+                            {t.role}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigation buttons */}
+            <div className="flex justify-center items-center gap-6 mt-10">
+              <button 
+                onClick={prevTestimonial}
+                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition group"
+              >
+                <ChevronLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition" />
+              </button>
+              <div className="flex gap-2">
+                {testimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentTestimonial(i)}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${i === currentTestimonial ? "bg-primary w-8" : "bg-white/10 w-2 hover:bg-white/30"}`}
+                  />
+                ))}
+              </div>
+              <button 
+                onClick={nextTestimonial}
+                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition group"
+              >
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* MARQUEE */}
       <section className="bg-primary text-primary-foreground py-5 overflow-hidden">
         <div className="flex gap-12 marquee-track whitespace-nowrap font-display text-2xl lg:text-3xl">
@@ -299,7 +394,7 @@ function Home() {
               {["React", "Next.js", "TypeScript", "Tailwind", "TanStack", "Design Systems", "SSR", "Accessibility"].map((w) => (
                 <span key={w} className="flex items-center gap-12">
                   {w}
-                  <Plus className="w-5 h-5" />
+                  <Asterisk className="w-5 h-5" />
                 </span>
               ))}
             </div>
@@ -323,7 +418,7 @@ function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {posts.map((p, i) => (
+            {posts.slice(0, 3).map((p, i) => (
               <Link
                 to="/blog/$slug"
                 params={{ slug: p.slug }}
