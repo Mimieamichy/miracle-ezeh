@@ -11,6 +11,7 @@ export function Footer() {
           </h2>
           <a
             href="mailto:amichy07@gmail.com"
+            target="_blank"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium hover:opacity-90 transition self-start lg:self-auto"
           >
             Hire me <ArrowUpRight className="w-4 h-4" />
@@ -37,9 +38,9 @@ export function Footer() {
           <div>
             <div className="text-accent-foreground/50 uppercase tracking-[0.18em] text-xs mb-3">Elsewhere</div>
             <ul className="space-y-2">
-              <li><a href="https://github.com/Mimieamichy" className="hover:text-primary">GitHub</a></li>
-              <li><a href="https://twitter.com/js_mimie" className="hover:text-primary">Twitter</a></li>
-              <li><a href="mailto:amichy07@gmail.com" className="hover:text-primary">Email</a></li>
+              <li><a href="https://github.com/Mimieamichy" target="_blank" className="hover:text-primary">GitHub</a></li>
+              <li><a href="https://x.com/dev_amichy" target="_blank" className="hover:text-primary">Twitter</a></li>
+              <li><a href="mailto:amichy07@gmail.com" target="_blank" className="hover:text-primary">Email</a></li>
             </ul>
           </div>
         </div>
