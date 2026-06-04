@@ -1,5 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import { ArrowLeft, Check, Copy, Share2, Twitter, Linkedin } from "lucide-react";
 import { getPost, posts } from "@/lib/posts";
 
@@ -17,6 +19,7 @@ export const Route = createFileRoute("/blog/$slug")({
       meta: [
         { title },
         { name: "description", content: desc },
+        ...(post?.heroImage ? [{ property: "og:image", content: post.heroImage }] : []),
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
         { property: "og:type", content: "article" },
@@ -60,7 +63,13 @@ function PostPage() {
 
   const onCopy = async () => {
     try {
-      await navigator.clipboard.writeText(shareUrl);
+      if (typeof window !== "undefined" && post.heroImage) {
+        const imageUrl = `${window.location.origin}${post.heroImage}`;
+        // copy image URL and page URL together so pastes include the asset
+        await navigator.clipboard.writeText(`${shareUrl}\n\n${imageUrl}`);
+      } else {
+        await navigator.clipboard.writeText(shareUrl);
+      }
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
@@ -93,18 +102,44 @@ function PostPage() {
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed mb-8">{post.excerpt}</p>
 
-        <div className={`aspect-[16/9] rounded-3xl mb-12 bg-gradient-to-br ${
-          post.slug === "shipping-react-faster" ? "from-primary/30 via-primary/50 to-primary/80" :
-          post.slug === "ssr-tradeoffs" ? "from-emerald-300 via-teal-400 to-cyan-600" :
-          "from-primary/20 via-primary/40 to-primary"
-        } flex items-end p-8`}>
-          <div className="font-display text-5xl lg:text-7xl text-accent/80 leading-none">{post.category}</div>
-        </div>
+        {post.heroImage ? (
+          <div className="relative aspect-[16/9] rounded-3xl mb-12 overflow-hidden">
+            <img
+              src={post.heroImage}
+              alt={`${post.category} artwork`}
+              className="absolute inset-0 w-full h-full object-cover opacity-60"
+            />
+            <div className="absolute inset-0 bg-black/25" aria-hidden />
+            <div className="absolute left-8 bottom-8">
+              <div className="font-display text-3xl lg:text-6xl font-bold tracking-tight text-white drop-shadow-lg">{post.category}</div>
+            </div>
+          </div>
+        ) : (
+          <div className={`aspect-[16/9] rounded-3xl mb-12 bg-gradient-to-br ${
+            post.slug === "shipping-react-faster" ? "from-primary/30 via-primary/50 to-primary/80" :
+            post.slug === "ssr-tradeoffs" ? "from-emerald-300 via-teal-400 to-cyan-600" :
+            "from-primary/20 via-primary/40 to-primary"
+          } flex items-end p-8`}>
+            <div className="font-display text-5xl lg:text-7xl text-accent/80 leading-none">{post.category}</div>
+          </div>
+        )}
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground/85 mb-12">
-          {post.body.map((para: string, i: number) => (
-            <p key={i}>{para}</p>
-          ))}
+          {
+            (() => {
+              const markdown = post.body.join("\n\n");
+              return (
+                <ReactMarkdown rehypePlugins={[rehypeRaw]} components={{
+                  img: ({ node, ...props }) => (
+                    // keep styling consistent with existing layout
+                    // eslint-disable-next-line jsx-a11y/alt-text
+                    <img className="rounded-lg mx-auto" {...props} />
+                  ),
+                  // allow paragraphs and emphasis/strong from Markdown normally
+                }}>{markdown}</ReactMarkdown>
+              );
+            })()
+          }
         </div>
 
         {/* Share bar */}

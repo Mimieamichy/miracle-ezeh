@@ -1,3 +1,7 @@
+import Image from "@/assets/404_not_found_dev_meme.svg";
+import classEcho from "@/assets/class-echo.png";
+import sakosile from "@/assets/sakosile.png";
+
 export type Post = {
   slug: string;
   title: string;
@@ -5,17 +9,61 @@ export type Post = {
   date: string;
   readTime: string;
   category: string;
+  heroImage?: string;
   body: string[];
 };
 
+
 export const posts: Post[] = [
+  {
+    slug: "beyond-deploy-button-spa-vs-ssr",
+    title: "Beyond the \"Deploy\" Button: How Hosting Platforms Actually See Your SPA vs. SSR Apps",
+    excerpt: "Why SPAs can 404 on refresh and SSR apps can surprise you with cold starts, what hosting platforms actually do after you click Deploy.",
+    heroImage: Image,
+    date: "2026-06-04",
+    readTime: "6 min read",
+    category: "Deployment",
+    body: [
+      "We’ve all been there. You run `npm run build`, push to GitHub, connect to Vercel (or Netlify), and celebrate the glorious ‘Deployment Successful’ checkmark. Then you refresh a sub-page and 404. Or you deploy an SSR app and wonder why your first-byte time or cloud bill just spiked.",
+      "Understanding how hosting platforms treat Single Page Applications (SPAs) versus Server-Side Rendered (SSR) apps after the build step saves hours of debugging. Here’s a practical breakdown.",
+      "---",
+      "## 1. The Single Page Application (SPA)",
+      "**Featuring:** React (Vite), Vue, Vanilla JS",
+      "### How the hosting platform sees it: “You're just a box of rocks”",
+      "To the host, your SPA is a folder of static assets: one `index.html`, some compiled `.js` and `.css` files, and images. The platform typically deploys those files to a CDN (Content Delivery Network), which serves the files from servers near users.",
+      "### The frontend gotcha: client-side routing and the dreaded 404",
+      "When a user navigates inside your app, the client-side router updates the URL and renders new views. But if the user refreshes `yoursite.com/dashboard`, the browser requests `/dashboard` from the server. The CDN looks for a `/dashboard` file, finds none, and returns 404.",
+      "### How to fix it",
+      "Tell the host to serve `index.html` for every route so the client app can handle routing. Examples: add a `vercel.json` or a `_redirects` file for Netlify, or configure CloudFront/S3 to rewrite 404s to `index.html` with a 200 status.",
+      "---",
+      "## 2. The Server-Side Rendered (SSR) App",
+      "**Featuring:** Next.js, Nuxt, Remix",
+      "### How the hosting platform sees it: “You are a living, breathing organism”",
+      "An SSR build produces server code not just static files. The platform must run server processes (Node servers or serverless functions) that render HTML on each request, fetching data and composing pages at runtime.",
+      "### How platforms handle SSR (serverless and edge functions)",
+      "Modern hosts slice SSR apps into serverless or edge functions. When a request arrives, the platform spins up a function to render the page, then tears it down when done — efficient, but with tradeoffs.",
+      "### The frontend gotchas",
+      "- **Cold starts:** Functions that haven’t run recently can add 1–2s latency on the first request.\n- **Environment variables:** With SSR, secrets and runtime config must be set in the host dashboard (not baked into client JS).\n- **Region latency:** If your DB is in `us-east-1` but the function runs in another region, data fetches add latency.",
+      "---",
+      // (removed SPA vs. SSR table per request)
+      "---",
+      "## The Frontend Takeaway",
+      "Don’t pick SSR because it’s trendy, and don’t pick SPA just because it’s easy. Choose based on product needs: if SEO and fast initial paint matter (blogs, marketing sites, public dashboards), accept server complexity and use SSR on a platform optimized for it. If you’re building an authenticated SaaS where users live inside the app, deploy as an SPA to a CDN and save yourself compute costs.",
+      "Happy deploying! 🚀",
+      "---",
+      "**Notes & practical fixes**",
+      "- SPA rewrite examples: use `_redirects` on Netlify (`/* /index.html 200`) or `vercel.json` with a fallback.\n- SSR tips: provision environment variables in your host settings and colocate your database and functions to reduce latency.",
+      "What’s your go-to hosting setup? Ever been burned by an SSR bill or an SPA 404? Let’s talk in the comments.",
+    ],
+  },
   {
     slug: "yes-i-understand-lie-class-echo",
     title: "The \"Yes, I Understand\" Lie: Why I Started Building Class Echo to Save My Teaching Sanity",
     excerpt: "Most students pretend they understand to avoid embarrassment. I built Class Echo to create a safe space for honest feedback without the performance anxiety.",
+    heroImage: classEcho,
     date: "2026-05-29",
     readTime: "5 min read",
-    category: "Building Products",
+    category: "Education",
     body: [
       "Picture this: you're standing in front of a classroom, pouring your heart and soul into explaining a complex tech concept something like asynchronous data fetching or nested React state management.",
       "You pause, take a sip of water, look around the room, and ask the ultimate forbidden question:",
@@ -109,6 +157,7 @@ export const posts: Post[] = [
     slug: "building-sakosile-challenges-lessons-growth",
     title: "Building SAKOSILE: Challenges, Lessons, and Growth as a Frontend Developer",
     excerpt: "Building SAKOSILE was more than just creating a web application — it was a project that challenged my problem-solving skills and improved my understanding of frontend architecture.",
+    heroImage: sakosile,
     date: "2026-05-23",
     readTime: "3 min read",
     category: "Case Study",
