@@ -15,15 +15,18 @@ export const Route = createFileRoute("/blog/$slug")({
     const post = loaderData?.post;
     const title = post ? `${post.title} — Miracle A. Ezeh` : "Article";
     const desc = post?.excerpt ?? "Article by Miracle A. Ezeh.";
+    const origin = process.env.SITE_ORIGIN ?? "";
+    const ogImage = post?.heroImage ? (origin ? `${origin}${post.heroImage}` : post.heroImage) : undefined;
+    const ogUrl = origin ? `${origin}/blog/${params.slug}` : `/blog/${params.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: desc },
-        ...(post?.heroImage ? [{ property: "og:image", content: post.heroImage }] : []),
+        ...(ogImage ? [{ property: "og:image", content: ogImage }, { name: "twitter:image", content: ogImage }] : []),
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: `/blog/${params.slug}` },
+        { property: "og:url", content: ogUrl },
         { name: "twitter:card", content: "summary_large_image" },
       ],
       links: [{ rel: "canonical", href: `/blog/${params.slug}` }],
@@ -63,13 +66,8 @@ function PostPage() {
 
   const onCopy = async () => {
     try {
-      if (typeof window !== "undefined" && post.heroImage) {
-        const imageUrl = `${window.location.origin}${post.heroImage}`;
-        // copy image URL and page URL together so pastes include the asset
-        await navigator.clipboard.writeText(`${shareUrl}\n\n${imageUrl}`);
-      } else {
-        await navigator.clipboard.writeText(shareUrl);
-      }
+      // copy only the page URL so social platforms pick up `og:image` for previews
+      await navigator.clipboard.writeText(shareUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
