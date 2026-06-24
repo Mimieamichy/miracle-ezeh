@@ -1,6 +1,9 @@
 import Image from "@/assets/404_not_found_dev_meme.svg";
 import classEcho from "@/assets/class-echo.png";
 import sakosile from "@/assets/sakosile.png";
+import tanstackImage from "@/assets/tanstack.webp";
+import devAiCollab from "@/assets/developer_ai_collaboration_cover.svg";
+import devSplitContrast from "@/assets/developer_split_contrast_cover.svg";
 
 export type Post = {
   slug: string;
@@ -15,6 +18,91 @@ export type Post = {
 
 
 export const posts: Post[] = [
+  {
+    slug: "ai-isnt-taking-your-job-the-developer-who-uses-it-well-is",
+    title: "AI Isn't Taking Your Job. The Developer Who Uses It Well Is.",
+    excerpt: "The real shift isn't AI vs. developers — it's developers who've integrated AI into their workflow vs. developers who haven't.",
+    heroImage: devAiCollab,
+    date: "2026-06-24",
+    readTime: "4 min read",
+    category: "Engineering",
+    body: [
+      "There's a version of this conversation that's mostly noise — doom threads about AI replacing programmers within five years, hot takes from people who've never shipped a feature with Copilot open. I want to skip past that and talk about what's actually happening on the ground, because it's more specific, and more useful, than \"AI is coming for us.\"",
+      "## The real shift isn't AI vs. developers",
+      "It's developers who've integrated AI into their workflow vs. developers who haven't.",
+      "That's the whole story. Not man vs. machine — it's two different developers applying for the same role, one of them shipping noticeably faster, and a hiring manager or client noticing the gap.",
+      "I've felt this shift directly. Debugging a TanStack Router SSR mismatch used to mean hours of manually tracing render output between server and client. Now I can describe the symptom, get a shortlist of likely causes ranked by probability, and verify the right one in minutes instead of hours. The debugging instinct still has to be mine — knowing *which* suggestion actually fits my route structure took experience, not a prompt. But the search space narrowed dramatically.",
+      "That's the pattern worth paying attention to: AI doesn't replace the judgment. It compresses the time between \"something's wrong\" and \"I understand why.\"",
+      "## What AI is actually good at (and bad at)",
+      "To use these tools well, you need an honest read on their limits.",
+      "**Strong at:** boilerplate, syntax recall across languages you don't touch daily, first-draft test cases, explaining unfamiliar error messages, summarizing documentation, refactoring suggestions once you've defined the target shape.",
+      "**Weak at:** understanding the actual constraints of your system — your specific hosting setup, your team's conventions, the business reason a feature has to work a certain way. It will confidently suggest a fix that's syntactically perfect and contextually wrong, and it won't flag that for you. You have to.",
+      "This is exactly why the developers who benefit most aren't the ones blindly accepting suggestions. They're the ones who already understand the problem well enough to evaluate the output critically — and use AI to move faster through the parts they've already mentally solved.",
+      "## The skill that's actually becoming valuable",
+      "Prompting well is a small part of this. The bigger skill is the same one that's always mattered: knowing what question to ask.",
+      "If you don't understand why an SSR mismatch happens, no amount of AI assistance will help you debug one efficiently — you'll paste error messages without context and get generic answers back. If you do understand it, you can describe the actual symptom precisely, and the tool becomes genuinely fast.",
+      "In other words: AI raises the ceiling for developers who already have strong fundamentals, and it's far less useful — sometimes actively misleading — for developers who don't.",
+      "That's the uncomfortable part of this conversation that doesn't get said enough. The tools aren't a substitute for understanding your stack. They're a force multiplier on understanding you already have.",
+      "## What this means practically",
+      "If you're early in your career, this isn't a reason to panic — it's a reason to be deliberate. Use AI tools while you're learning, but don't let them replace the parts of learning that build judgment: reading error messages slowly, understanding why a fix works and not just that it works, building your own mental model of how your framework behaves under the hood.",
+      "If you're further along, the move is integration, not resistance. The developers I see moving fastest right now aren't the ones who've memorized more syntax. They're the ones who've figured out where AI shortens their loop — code review prep, test scaffolding, documentation, first-pass debugging — and where it doesn't, and they haven't blurred that line.",
+      `![Developer AI Collaboration](${devSplitContrast})`,
+      "AI isn't going to write your portfolio, decide your project architecture, or know that your client actually needs fee management bundled with result publishing instead of two separate products. That judgment is still yours. The job isn't disappearing. It's shifting toward the developers willing to treat AI as infrastructure rather than either a threat or a crutch.",
+      "That shift is already happening. The only real question is which side of it you're building your skills for.",
+      "---",
+      "*Currently building Gradifyre, a school management platform for Nigerian schools — and yes, AI tools are part of how it gets built.*"
+    ]
+  },
+  {
+    slug: "the-week-git-lfs-tanstack-router-and-deployment-teamed-up",
+    title: "The Week Git LFS, TanStack Router, and Deployment Teamed Up Against Me",
+    excerpt: "A real account of an SSR mismatch, a file-size limit, and how I ended up rebuilding in Next.js.",
+    heroImage: tanstackImage,
+    date: "2026-06-24",
+    readTime: "4 min read",
+    category: "Deployment",
+    body: [
+      "Every developer has a project that humbles them. This was mine.",
+      "It started normally enough: code committed, assets tracked, TanStack Router handling navigation the way it's supposed to. I pushed, set up the deploy, and figured I'd have this live within the hour.",
+      "That was not how the day went.",
+      "---",
+      "## Chapter one: Git LFS and the file-size limit nobody warns you about",
+      "Git LFS (Large File Storage) works beautifully on your local machine. You track your large files — images, media, whatever heavy assets your project needs — and everything commits and pushes without complaint.",
+      "The problem shows up at deploy time.",
+      "Most hosting providers cap LFS bandwidth and storage on free or standard tiers, and that cap is rarely visible until you exceed it. There's no warning beforehand. The build simply fails, often with an error message vague enough that you start second-guessing your own setup before you even get to the real cause.",
+      "In my case, it was a straightforward `file size limit exceeded` — four words that cost me a full Saturday of debugging before I traced it back to LFS quotas rather than anything in my actual code.",
+      "---",
+      "## Chapter two: the SSR mismatch with TanStack Router",
+      "To be clear upfront: TanStack Router is a solid library. This isn't a takedown of the ecosystem — it's an account of how one specific mismatch nearly broke my patience.",
+      "An SSR (server-side rendering) mismatch happens when the server renders one version of a page and the client renders a different version of that same page on hydration. React compares the two and, when they don't line up, throws hydration warnings — sometimes cascading into broken UI, sometimes just noisy console errors that mask the real issue underneath.",
+      "What made this particularly frustrating was the way it compounded. I'd fix one mismatch — usually traced to a loader returning slightly different data shapes server-side vs. client-side — and a new one would surface somewhere else in the route tree. Each fix exposed another layer. I went through my route definitions, loaders, and component structure more than once trying to isolate exactly where client and server state were diverging.",
+      "By the end of it, I knew that loading spinner a little too well.",
+      "---",
+      "## Chapter three: deployment, where both problems collided",
+      "By the time I reached deployment, I'd already fixed the SSR issues and thought I was clear. I wasn't.",
+      "`Build failed.`",
+      "I checked environment variables — fine. I checked routes — fine, as far as I could tell. Then I checked the LFS files again, because they were still quietly consuming bandwidth in the background, unrelated to anything I'd just fixed in the router. Two separate problems, same deploy pipeline, each one masking the other's error output.",
+      "I pushed again. Failed again. At that point it stopped being a single bug to fix and became a process of isolating which failure belonged to which system — LFS quota issues showing up as generic build failures, SSR mismatches showing up as runtime hydration warnings that only appeared in production, not locally.",
+      "---",
+      "## Why I moved to Next.js",
+      "This wasn't a decision I made mid-crisis. It came after, once I'd actually fixed both issues and had time to weigh whether I wanted to keep solving this category of problem on every project going forward.",
+      "To be specific about what changed:",
+      "- **File-based routing** removed an entire class of configuration I'd been managing manually with TanStack Router.",
+      "- **Built-in SSR handling** in Next.js meant the client/server data shape mismatches I'd spent days chasing simply weren't something I had to architect myself — the framework's data-fetching patterns (`getServerSideProps` / App Router server components) are designed around avoiding that exact hydration gap.",
+      "- It didn't eliminate the LFS issue — that's a Git/hosting-level problem independent of framework — but it did mean I was no longer debugging two unrelated failure modes inside the same build pipeline.",
+      `![TanStack Router vs Next.js](${tanstackImage})`,
+      "I've deployed three projects since the switch without a single hydration warning. I'm not claiming Next.js is objectively superior to TanStack Router for every use case — but for how I build and where I deploy, it removed a category of friction that TanStack Router's flexibility was costing me.",
+      "---",
+      "## What I'd tell another developer hitting this",
+      "1. **Check your hosting provider's Git LFS bandwidth and storage limits before you commit large files across your history.** The failure shows up at deploy time, not commit time, which makes it harder to trace.",
+      "2. **Treat every hydration warning as worth investigating immediately**, even if the page still renders. They tend to compound rather than resolve on their own.",
+      "3. **Isolate failures by system before assuming they're related.** I lost time treating the LFS quota issue and the SSR mismatch as one problem when they were two separate failures sharing a build pipeline.",
+      "4. **A framework switch is a legitimate engineering decision, not a failure.** Choosing Next.js over a more manual TanStack Router setup, for my workflow, removed recurring friction rather than just working around a one-off bug.",
+      "If you're dealing with TanStack Router SSR mismatches or LFS-related deploy failures right now, I hope this saves you some of the time it cost me to trace both issues back to their root causes.",
+      "---",
+      "*Working through a similar setup or have a different take on TanStack Router's SSR model? I'd be glad to hear about it — reach out via the contact page.*"
+    ]
+  },
   {
     slug: "responsive-design-isnt-about-mobile-its-about-uncertainty",
     title: "Responsive Design Isn't About Mobile. It's About Uncertainty.",

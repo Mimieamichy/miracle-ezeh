@@ -70,7 +70,7 @@ function ProjectsPage() {
       </section>
 
       {/* Split: list left, sticky preview right */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-20">
+      <section className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-12 lg:gap-20">
         {/* List */}
         <div className="min-h-[300px]">
           {filteredProjects.length > 0 ? (
@@ -156,7 +156,7 @@ function ProjectsPage() {
         {p && (
           <aside className="hidden lg:block lg:sticky lg:top-28 self-start">
             <div className="group/preview relative rounded-[2.5rem] overflow-hidden bg-accent shadow-2xl">
-              <div className="aspect-[4/5] overflow-hidden relative">
+              <div className="aspect-video overflow-hidden relative">
                 {p.video && (
                   <video
                     key={p.video}

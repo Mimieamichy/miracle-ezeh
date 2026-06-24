@@ -9,6 +9,10 @@ import vMae from "@/assets/maecoinage-webiste.mp4";
 import vRais from "@/assets/rais.mp4";
 import vSakosile from "@/assets/sakosile.mp4";
 import vSoma from "@/assets/soma-vault.mp4";
+import vBirthdayII from "@/assets/Happy Birthday.mp4"; 
+import vEmmasStrons from "@/assets/Emmastrons.mp4";
+import vJNC from "@/assets/JNC Ventures.mp4";
+
 
 export type Project = {
   slug: string;
@@ -49,7 +53,7 @@ export const projects: Project[] = [
     category: "Website",
     year: "2026",
     repo: "https://github.com/Mimieamichy/revival-academy",
-    live: "https://rpais.vercel.app",
+    live: "https://www.revivalacademy.com.ng/",
     video: vRais,
     accent: "from-amber-400 to-orange-600",
   },
@@ -174,6 +178,48 @@ export const projects: Project[] = [
     repo: "https://github.com/Mimieamichy/custom-birthday-website",
      live: "https://custom-birthday-website.vercel.app/",
     video: vBirthday,
+    accent: "from-purple-400 to-indigo-500",
+  },
+    {
+    slug: "customized-birthdayII",
+    name: "Custom BirthdayII",
+    tagline: "Personalized Birthday Webpage.",
+    description:
+      "A bespoke website for a birthday celebration, featuring personal galleries, event details, and interactive guest elements.",
+    stack: ["HTML", "CSS", "JavaScript"],
+    category: "Customized Website",
+    year: "2026",
+    repo: "https://github.com/Mimieamichy/custom-birthday-websiteII",
+     live: "https://mimieamichy.github.io/custom-birthday-websiteII/",
+    video: vBirthdayII,
+    accent: "from-purple-400 to-indigo-500",
+  },
+    {
+    slug: "EmmaStrons-Website",
+    name: "EmmaStrons Website",
+    tagline: "Website for EmmaStrons.",
+    description:
+      "A website for an interior and exterior company called EmmaStrons, featuring their services, portfolio and contact information.",
+    stack: ["TypeScript", "React", "Vite","TanStack Router", " Tailwind"],
+    category: "Website",
+    year: "2026",
+    repo: "https://github.com/Mimieamichy/emmastrons",
+     live: "https://www.emmastrons.com.ng/",
+    video: vEmmasStrons,
+    accent: "from-purple-400 to-indigo-500",
+  },
+    {
+    slug: "JNC Ventures",
+    name: "JNC Ventures Website",
+    tagline: "Website for JNC Ventures.",
+    description:
+      "A website for JNC Ventures a Cyber security company, featuring their services, portfolio and contact information.",
+    stack: ["TypeScript", "React", "Vite","TanStack Router", " Tailwind"],
+    category: "Website",
+    year: "2026",
+    repo: "https://github.com/Mimieamichy/jncventures",
+     live: "https://jncventures.com.ng",
+    video: vJNC,
     accent: "from-purple-400 to-indigo-500",
   },
 ];

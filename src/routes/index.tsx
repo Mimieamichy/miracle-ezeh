@@ -284,7 +284,7 @@ function Home() {
                 key={p.slug}
                 className="group block rounded-3xl overflow-hidden bg-secondary border border-border"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-video overflow-hidden">
                   {p.video && (
                     <video
                       src={p.video}
