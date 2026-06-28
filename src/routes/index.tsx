@@ -11,7 +11,8 @@ import {
   Check,
   Asterisk,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Download
 } from "lucide-react";
 import image from "@/assets/miracle-ezeh.jpeg";
 import { projects, testimonials } from "@/lib/projects";
@@ -145,10 +146,13 @@ function Home() {
                 Portfolio <ArrowUpRight className="w-4 h-4" />
               </Link>
               <a
-                href="#contact"
+                href="/miracle-ezeh.pdf"
+                download="Miracle-Ezeh-CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className=" hidden md:inline-flex items-center gap-2 bg-background text-foreground border border-border px-3 py-1.5 md:px-5 md:py-2.5 rounded-full font-small md:font-medium text-xs md:text-sm hover:bg-secondary transition"
               >
-                Hire me
+                Download CV <Download className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -249,12 +253,23 @@ function Home() {
                   <div className="text-sm text-muted-foreground mt-1">Staff impacted</div>
                 </div>
               </div>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full font-medium hover:bg-accent/90"
-              >
-                Hire me <ArrowUpRight className="w-4 h-4" />
-              </a>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full font-medium hover:bg-accent/90"
+                >
+                  Hire me <ArrowUpRight className="w-4 h-4" />
+                </a>
+                <a
+                  href="/miracle-ezeh.pdf"
+                  download="Miracle-Ezeh-CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-border bg-background text-foreground px-6 py-3 rounded-full font-medium hover:bg-secondary transition-colors"
+                >
+                  Download my CV <Download className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -311,7 +326,7 @@ function Home() {
           </div>
 
           <div className="flex flex-wrap gap-2 mt-10 justify-center">
-            {["Landing Page", "Product Design", "Animation", "Design Systems", "Cards"].map((t) => (
+            {["Landing Page", "WebSites", "WebApp", "Design Systems", "Mobile Apps"].map((t) => (
               <span key={t} className="px-4 py-1.5 rounded-full bg-secondary border border-border text-xs">
                 {t}
               </span>

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowUpRight, Github, ExternalLink, Sparkle } from "lucide-react";
+import { ArrowUpRight, Github, ExternalLink, Sparkle, BookOpen } from "lucide-react";
 import { projects } from "@/lib/projects";
 
 export const Route = createFileRoute("/projects")({
@@ -131,6 +131,16 @@ function ProjectsPage() {
                               <ExternalLink className="w-4 h-4" /> Live
                             </a>
                           )}
+                          {proj.hasCaseStudy && (
+                            <Link 
+                              to="/projects/$slug" 
+                              params={{ slug: proj.slug }}
+                              onClick={(e) => e.stopPropagation()}
+                              className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-accent text-accent-foreground text-xs font-medium hover:opacity-90 transition"
+                            >
+                              <BookOpen className="w-4 h-4" /> Case Study
+                            </Link>
+                          )}
                         </div>
                       </div>
 
@@ -191,6 +201,15 @@ function ProjectsPage() {
                       <ExternalLink className="w-4 h-4" /> Live
                     </a>
                   ) : null}
+                  {p.hasCaseStudy && (
+                    <Link
+                      to="/projects/$slug"
+                      params={{ slug: p.slug }}
+                      className="flex-1 flex items-center justify-center gap-2 bg-white text-black hover:bg-white/90 px-4 py-2.5 rounded-xl text-xs font-bold transition-all"
+                    >
+                      <BookOpen className="w-4 h-4" /> Case Study
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>

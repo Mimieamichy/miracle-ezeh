@@ -26,6 +26,7 @@ export type Project = {
   live?: string;
   video?: string;
   accent: string;
+  hasCaseStudy?: boolean;
 };
 
 export const projects: Project[] = [
@@ -34,8 +35,8 @@ export const projects: Project[] = [
     name: "Harley Innovations",
     tagline: "Website for an innovations hub.",
     description:
-      "A well built Website for Harley Innovations Hub. Built reusable component libraries, integrated REST APIs, and designed responsive course delivery experiences.",
-    stack: ["Next.js", "TypeScript", "Tailwind"],
+      "A well built Website for Harley Innovations Hub. Built reusable component libraries, and designed responsive course delivery experiences.",
+    stack: ["React", "TypeScript", "Tailwind"],
     category: "Website",
     year: "2026",
     repo: "https://github.com/Mimieamichy/harley-innovations-website",
@@ -46,9 +47,9 @@ export const projects: Project[] = [
   {
     slug: "revival-academy",
     name: "Revival Academy",
-    tagline: "Modern school portal with admissions & results.",
+    tagline: "Modern school portal with results & school fees payment portal.",
     description:
-      "A school website and portal (RAIS) with admissions, results. Focused on accessibility (WCAG) and a calm reading experience for parents and staff.",
+      "A school website with embeded Result and Schools fees payment portal with a Focused on accessibility (WCAG) and a calm reading experience for parents and staff.",
     stack: ["React", "TypeScript", "Tailwind"],
     category: "Website",
     year: "2026",
@@ -60,7 +61,7 @@ export const projects: Project[] = [
   {
     slug: "soma-vault",
     name: "Soma Vault",
-    tagline: "A focused study & note vault for learners.",
+    tagline: "An AI-powered focused study & note vault for learners.",
     description:
       "An AI powered study companion for organizing notes, summaries and revision sets. Built around a fast typography-first reading view with keyboard shortcuts.",
     stack: ["React", "TypeScript", "Vite"],
@@ -70,6 +71,7 @@ export const projects: Project[] = [
     live: "https://soma-vault.vercel.app/",
     video: vSoma,
     accent: "from-orange-300 to-red-500",
+    hasCaseStudy: true,
   },
   {
     slug: "kumani",
@@ -77,7 +79,7 @@ export const projects: Project[] = [
     tagline: "A Hospital Management System (HMS) for a hospital.",
     description:
       "A Hospital Management System (HMS) for a hospital. Features patient management, appointment scheduling, and inventory tracking.",
-    stack: ["Next.js", "TypeScript", "Tailwind"],
+    stack: ["shadcn/ui", "TypeScript", "Tailwind", "React"],
     category: "WebApp",
     year: "2025",
     repo: "https://github.com/Mimieamichy/kumani",
@@ -89,13 +91,15 @@ export const projects: Project[] = [
     name: "Sakosile",
     tagline: "An Electronic Tracking and Documentation System for Postgraduate Students",
     description:
-      "Sakosile helps university staff, students, and administrators manage postgraduate and undergraduate project workflows in a centralized platform.",
-    stack: ["JavaScript", "React", "Node"],
+      "Sakosile helps university staff, students, and administrators manage postgraduate project workflows in a centralized platform.",
+    stack: ["TypeScript", "React", "Tailwind", "Zustand"],
     category: "WebApp",
     year: "2024",
     repo: "https://github.com/Mimieamichy/SAKOSILE",
+    live: "https://fulafia-electronic-tracking-and-8x35.onrender.com/",
     video: vSakosile,
     accent: "from-orange-500 to-amber-300",
+    hasCaseStudy: true,
   },
   {
     slug: "kika-plumbing",
@@ -117,7 +121,7 @@ export const projects: Project[] = [
     tagline: "A Modern Website Built for a Tech Startup.",
     description:
       "This is a modern website built for a tech startup. It features a clean, responsive design, and a focus on user experience.",
-    stack: ["React", "TypeScript", "Tailwind"],
+    stack: ["React", "TypeScript", "Tailwind", "Tanstack Query"],
     category: "Website",
     year: "2026",
     repo: "https://github.com/Mimieamichy/mae-coinage",
@@ -197,9 +201,9 @@ export const projects: Project[] = [
     {
     slug: "EmmaStrons-Website",
     name: "EmmaStrons Website",
-    tagline: "Website for EmmaStrons.",
+    tagline: "Bespoke digital showcase for a premium design firm.",
     description:
-      "A website for an interior and exterior company called EmmaStrons, featuring their services, portfolio and contact information.",
+      "A polished, highly responsive marketing website for EmmaStrons, a premier interior & exterior design agency. Built with a focus on fluid animations, high-fidelity portfolio presentation, and smooth layout navigation.",
     stack: ["TypeScript", "React", "Vite","TanStack Router", " Tailwind"],
     category: "Website",
     year: "2026",
@@ -211,9 +215,9 @@ export const projects: Project[] = [
     {
     slug: "JNC Ventures",
     name: "JNC Ventures Website",
-    tagline: "Website for JNC Ventures.",
+    tagline: "Secure showcase platform for an enterprise cybersecurity startup.",
     description:
-      "A website for JNC Ventures a Cyber security company, featuring their services, portfolio and contact information.",
+      "A sleek, corporate marketing platform for JNC Ventures, a cybersecurity consultancy. Features optimized asset loading, structured service cataloging, and an interactive contact interface for business clients.",
     stack: ["TypeScript", "React", "Vite","TanStack Router", " Tailwind"],
     category: "Website",
     year: "2026",
