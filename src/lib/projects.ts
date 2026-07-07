@@ -12,7 +12,7 @@ import vSoma from "@/assets/soma-vault.mp4";
 import vBirthdayII from "@/assets/Happy Birthday.mp4"; 
 import vEmmasStrons from "@/assets/Emmastrons.mp4";
 import vJNC from "@/assets/JNC Ventures.mp4";
-
+import vClassEcho from "@/assets/ClassEcho.mp4";
 
 export type Project = {
   slug: string;
@@ -30,6 +30,20 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "class-echo",
+    name: "ClassEcho",
+    tagline: "Anonymous Feedback System.",
+    description:
+      "ClassEcho is a simple, anonymous feedback system for lecturers and students. Instructors create feedback sessions and share unique links with students, who provide anonymous ratings and comments without needing to sign up.",
+    stack: ["React 19", "TanStack Start", "Tailwind CSS", "TypeScript", "Supabase"],
+    category: "WebApp",
+    year: "2026",
+    repo: "https://github.com/Mimieamichy/class-echo",
+    live: "https://class-echo.amichy07.workers.dev/",
+    video: vClassEcho,
+    accent: "from-blue-500 to-indigo-600",
+  },
   {
     slug: "harley-innovations",
     name: "Harley Innovations",

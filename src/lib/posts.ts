@@ -19,6 +19,41 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "concept-to-code-dennic-electrical",
+    title: "From Concept to Code: Building the Dennic Electrical Website",
+    excerpt: "A look into how I built a modern, responsive, and interactive website for Dennic Electrical Construction Company.",
+    date: "2026-07-07",
+    readTime: "4 min read",
+    category: "Engineering",
+    body: [
+      "As a frontend developer, one of the most satisfying experiences is taking a client's vision and turning it into a polished, high-performing digital reality. Recently, I had the pleasure of building the website for **Dennic Electrical Construction Company**, a project that challenged me to balance corporate professionalism with modern web aesthetics.",
+      "In this post, I want to walk you through my journey from the initial concept to the final, deployed code.",
+      "## Understanding the Concept and Client Needs",
+      "Dennic Electrical isn't just any company; they deal with heavy-duty construction and electrical engineering. Their website needed to exude trust, reliability, and precision. During the initial discovery phase, a few core requirements stood out:",
+      "- **Professional & Authoritative:** The color palette and typography needed to feel grounded. We landed on a strong \"Navy Deep\" primary color.",
+      "- **Showcase of Work:** A dedicated Projects section was essential to display their past construction and electrical jobs.",
+      "- **Responsive & Accessible:** Clients might be viewing the site from a desktop in an office or a mobile phone on a construction site. It had to work flawlessly everywhere.",
+      "## Choosing the Tech Stack",
+      "To ensure the site was blazingly fast and easy to maintain, I went with my trusted modern stack:",
+      "- **React (via Vite):** For a snappy, component-driven architecture.",
+      "- **Tailwind CSS:** For rapid, highly-customizable styling without leaving the markup.",
+      "- **TypeScript:** To catch errors early and ensure the data structures (like project lists and services) were strongly typed.",
+      "## Designing the Architecture",
+      "A corporate website like this benefits from a clean, predictable structure. I broke the site down into clear, distinct routes: `/`, `/about`, `/services`, and `/projects`.",
+      "Each of these pages was wrapped in a consistent layout. For example, maintaining the global theme was as simple as wrapping the main content in a container styled with Tailwind with responsive padding (`pt-24 sm:pt-28 md:pt-32`) to ensure the content always sits perfectly below the fixed header, regardless of whether the user is on a tiny mobile screen or a massive ultrawide monitor.",
+      "## Overcoming Challenges: The Navigation",
+      "One of the interesting challenges was the navigation. Corporate sites need clear routing, but they also need to look modern. I implemented a solid header for desktop users, but for mobile, I built a custom slide-out `Sidebar` component.",
+      "This required careful state management to ensure smooth transitions and accessibility (making sure focus is trapped within the sidebar when it's open, and that it can be closed with the escape key).",
+      "## Pushing Boundaries: Interactive 3D Elements",
+      "To truly make the site stand out and feel premium, I integrated an interactive 3D element. Instead of flat, static images for their core engineering concepts, I brought in a dynamic 3D model that users can interact with. This wasn't just for show—it demonstrated Dennic's commitment to cutting-edge technology and precision engineering. Balancing the 3D performance with the site's overall speed was a fun challenge, requiring careful lazy loading and canvas optimization.",
+      "## Highlighting the Services and Projects",
+      "The bread and butter of the Dennic website are the **Services** and **Projects** pages.",
+      "Instead of just dumping text on a page, I built reusable card components. These components accept props for the title, description, and an image or icon. This modular approach meant that if the client wants to add a new service next month, it's just a matter of adding a new object to a data array—no layout changes required.",
+      "## Conclusion",
+      "Building the Dennic Electrical website was a fantastic exercise in translating a rugged, real-world industry into a sleek, professional web presence. It reinforced my belief that the right tech stack combined with a clear understanding of the client's goals always leads to a successful launch."
+    ]
+  },
+  {
     slug: "ai-isnt-taking-your-job-the-developer-who-uses-it-well-is",
     title: "AI Isn't Taking Your Job. The Developer Who Uses It Well Is.",
     excerpt: "The real shift isn't AI vs. developers — it's developers who've integrated AI into their workflow vs. developers who haven't.",
